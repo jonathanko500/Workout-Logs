@@ -8,45 +8,44 @@
 import Foundation
 
 @MainActor
-class WorkoutLogStore: ObservableObject {
-    @Published var workoutLogs = [WorkoutLog]()
+class LogStore: ObservableObject {
+    @Published var events = [Log]()
     @Published var preview: Bool
-    @Published var changedWorkoutLog: WorkoutLog?
-    @Published var movedWorkoutLog: WorkoutLog?
+    @Published var changedEvent: Log?
+    @Published var movedEvent: Log?
 
     init(preview: Bool = false) {
         self.preview = preview
-        fetchWorkoutLogs()
+        fetchEvents()
     }
 
-    func fetchWorkoutLogs() {
+    func fetchEvents() {
         if preview {
-            workoutLogs = WorkoutLog.sampleWorkouts
+            events = Log.sampleEvents
         } else {
-            // Load from your persistence store
+            // load from your persistence store
         }
     }
 
-    func delete(_ workoutLog: WorkoutLog) {
-        if let index = workoutLogs.firstIndex(where: { $0.id == workoutLog.id }) {
-            changedWorkoutLog = workoutLogs.remove(at: index)
+    func delete(_ event: Log) {
+        if let index = events.firstIndex(where: {$0.id == event.id}) {
+            changedEvent = events.remove(at: index)
         }
     }
 
-    func add(_ workoutLog: WorkoutLog) {
-        workoutLogs.append(workoutLog)
-        changedWorkoutLog = workoutLog
+    func add(_ event: Log) {
+        events.append(event)
+        changedEvent = event
     }
 
-    func update(_ workoutLog: WorkoutLog) {
-        if let index = workoutLogs.firstIndex(where: { $0.id == workoutLog.id }) {
-            movedWorkoutLog = workoutLogs[index]
-            workoutLogs[index].date = workoutLog.date
-            workoutLogs[index].warmUp = workoutLog.warmUp
-            workoutLogs[index].preSet = workoutLog.preSet
-            workoutLogs[index].mainSet = workoutLog.mainSet
-            workoutLogs[index].coolDown = workoutLog.coolDown
-            changedWorkoutLog = workoutLog
+    func update(_ event: Log) {
+        if let index = events.firstIndex(where: {$0.id == event.id}) {
+            movedEvent = events[index]
+            events[index].date = event.date
+            events[index].note = event.note
+            events[index].logType = event.logType
+            changedEvent = event
         }
     }
+
 }

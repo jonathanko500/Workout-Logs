@@ -5,22 +5,43 @@
 //  Created by Jonathan Ko on 11/28/23.
 //
 
+//
+// Created for UICalendarView_SwiftUI
+// by Stewart Lynch on 2022-06-28
+// Using Swift 5.0
+//
+// Follow me on Twitter: @StewartLynch
+// Subscribe on YouTube: https://youTube.com/StewartLynch
+//
+
 import Foundation
 
-struct WorkoutLog: Identifiable {
-    enum ExerciseType: String, Identifiable, CaseIterable {
-        case set
+struct Log: Identifiable {
+    enum LogType: String, Identifiable, CaseIterable {
+        case work, home, social, sport, unspecified
         var id: String {
             self.rawValue
         }
+
+        var icon: String {
+            switch self {
+            case .work:
+                return "🏦"
+            case .home:
+                return "🏡"
+            case .social:
+                return "🎉"
+            case .sport:
+                return "🏟"
+            case .unspecified:
+                return "📌"
+            }
+        }
     }
-    
-    var exerciseType: ExerciseType
+
+    var logType: LogType
     var date: Date
-    var warmUp: String
-    var preSet: String
-    var mainSet: String
-    var coolDown: String
+    var note: String
     var id: String
     
     var dateComponents: DateComponents {
@@ -35,24 +56,24 @@ struct WorkoutLog: Identifiable {
         dateComponents.calendar = Calendar(identifier: .gregorian)
         return dateComponents
     }
-    
-    init(id: String = UUID().uuidString, exerciseType: ExerciseType, date: Date, warmUp: String, preSet: String, mainSet: String, coolDown: String) {
-        self.exerciseType = exerciseType
+
+    init(id: String = UUID().uuidString, logType: LogType = .unspecified, date: Date, note: String) {
+        self.logType = logType
         self.date = date
-        self.warmUp = warmUp
-        self.preSet = preSet
-        self.mainSet = mainSet
-        self.coolDown = coolDown
+        self.note = note
         self.id = id
     }
-    
-    // Sample workout log entries
-    static var sampleWorkouts: [WorkoutLog] {
+
+    // Data to be used in the preview
+    static var sampleEvents: [Log] {
         return [
-            WorkoutLog(exerciseType: .set, date: Date().addingTimeInterval(-3600), warmUp: "Stretching and mobility drills", preSet: "Light jogging", mainSet: "Weightlifting - 3 sets of 12 reps", coolDown: "Slow jogging and stretching"),
-            WorkoutLog(exerciseType: .set, date: Date().addingTimeInterval(-7200), warmUp: "Dynamic stretching", preSet: "Jumping jacks and bodyweight exercises", mainSet: "High-intensity interval training - 20 sets", coolDown: "Breathing exercises and cool-down stretches"),
-            WorkoutLog(exerciseType: .set, date: Date().addingTimeInterval(-10800), warmUp: "Warm-up jog", preSet: "Sprints", mainSet: "Running - 8 sets of 2km each", coolDown: "Walking and light stretching"),
-            WorkoutLog(exerciseType: .set, date: Date().addingTimeInterval(-14400), warmUp: "Joint rotations", preSet: "Calisthenics - 3 sets of 15 reps", mainSet: "Core exercises", coolDown: "Static stretching and relaxation techniques")
+            Log(logType: .home, date: Date().diff(numDays: 0), note: "Take dog to groomers"),
+            Log(date: Date().diff(numDays: -1), note: "Get gift for Emily"),
+            Log(logType: .home, date: Date().diff(numDays: 6), note: "File tax returns."),
+            Log(logType: .social, date: Date().diff(numDays: 2), note: "Dinner party at Dave and Janet's"),
+            Log(logType: .work, date: Date().diff(numDays: -1), note: "Complete Audit."),
+            Log(logType: .sport, date: Date().diff(numDays: -3), note: "Football Game"),
+            Log(date: Date().diff(numDays: -4), note: "Plan for winter vacation.")
         ]
     }
 }

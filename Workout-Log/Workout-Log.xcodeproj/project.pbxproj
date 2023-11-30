@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67BAE6342B180F6900FAF4EF /* LogFormType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BAE6332B180F6900FAF4EF /* LogFormType.swift */; };
+		67BAE6362B18120B00FAF4EF /* LogFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BAE6352B18120B00FAF4EF /* LogFormView.swift */; };
+		67BAE6382B1812CC00FAF4EF /* LogFormVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BAE6372B1812CC00FAF4EF /* LogFormVM.swift */; };
 		67C419862B155265000E730C /* Workout_LogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C419852B155265000E730C /* Workout_LogApp.swift */; };
 		67C419882B155265000E730C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C419872B155265000E730C /* ContentView.swift */; };
 		67C4198A2B155267000E730C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67C419892B155267000E730C /* Assets.xcassets */; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		67BAE6332B180F6900FAF4EF /* LogFormType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFormType.swift; sourceTree = "<group>"; };
+		67BAE6352B18120B00FAF4EF /* LogFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFormView.swift; sourceTree = "<group>"; };
+		67BAE6372B1812CC00FAF4EF /* LogFormVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFormVM.swift; sourceTree = "<group>"; };
 		67C419822B155265000E730C /* Workout-Log.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Workout-Log.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67C419852B155265000E730C /* Workout_LogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout_LogApp.swift; sourceTree = "<group>"; };
 		67C419872B155265000E730C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +73,9 @@
 				67D9D3492B15F1FE00BCFF3F /* Date+Extensions.swift */,
 				67D9D34B2B15F21C00BCFF3F /* Log.swift */,
 				67D9D34D2B15F25000BCFF3F /* LogStore.swift */,
+				67BAE6332B180F6900FAF4EF /* LogFormType.swift */,
+				67BAE6352B18120B00FAF4EF /* LogFormView.swift */,
+				67BAE6372B1812CC00FAF4EF /* LogFormVM.swift */,
 			);
 			path = "Workout-Log";
 			sourceTree = "<group>";
@@ -151,8 +160,11 @@
 			files = (
 				67D9D34E2B15F25000BCFF3F /* LogStore.swift in Sources */,
 				67C419942B1552B0000E730C /* CalendeerView.swift in Sources */,
+				67BAE6342B180F6900FAF4EF /* LogFormType.swift in Sources */,
 				67D9D34A2B15F1FE00BCFF3F /* Date+Extensions.swift in Sources */,
+				67BAE6382B1812CC00FAF4EF /* LogFormVM.swift in Sources */,
 				67D9D34C2B15F21C00BCFF3F /* Log.swift in Sources */,
+				67BAE6362B18120B00FAF4EF /* LogFormView.swift in Sources */,
 				67C419882B155265000E730C /* ContentView.swift in Sources */,
 				67C419862B155265000E730C /* Workout_LogApp.swift in Sources */,
 			);

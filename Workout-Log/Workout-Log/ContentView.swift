@@ -8,18 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var logStore: LogStore
+    @State private var dateSelected: DateComponents?
+    @State private var displayLog = false
+    
     var body: some View {
-        NavigationStack {
-            ScrollView{
-                CalenderView(interval: DateInterval(start: .distantPast, end: .distantFuture))
+        NavigationView {
+            ScrollView {
+                CalenderView(interval: DateInterval(start: .distantPast, end: .distantFuture), logStore: logStore, dateSelected: $dateSelected, displayLog: $displayLog)
             }
-                .navigationTitle("Workout Logs")
+            .navigationTitle("Workout Logs")
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        let logStore = LogStore(preview: true)
+        return ContentView().environmentObject(logStore)
     }
 }

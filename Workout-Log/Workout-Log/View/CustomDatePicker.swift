@@ -5,6 +5,9 @@
 //  Created by Jonathan Ko on 12/1/23.
 //
 
+
+//cont tutorail @8:52
+
 import SwiftUI
 
 struct CustomDatePicker: View{
@@ -26,11 +29,11 @@ struct CustomDatePicker: View{
                 
                 VStack(alignment: .leading, spacing: 10){
                     //top of calander holding month + year
-                    Text("Year")
+                    Text(extraDate()[0])
                         .font(.caption)
                         .fontWeight(.semibold)
                     
-                    Text("Month")
+                    Text(extraDate()[1])
                         .font(.title.bold())
                         
                 }
@@ -40,12 +43,19 @@ struct CustomDatePicker: View{
                 // start of buttons to change months/year
                 Button {
                     
+                    withAnimation{
+                        currMonth -= 1
+                    }
+                    
                 } label: {
                     Image(systemName: "chevron.left")
                         .font(.title2)
                 }
                 
                 Button {
+                    withAnimation{
+                        currMonth -= 1
+                    }
                     
                 } label: {
                     Image(systemName: "chevron.right")
@@ -72,19 +82,43 @@ struct CustomDatePicker: View{
             LazyVGrid(columns: col, spacing: 15){
                 ForEach(extractDate()) { value in
                     Text("\(value.day)")
+                        .font(.title3.bold())
                 }
             }
-            
+        }
+        .onChange(of: currMonth){newValue in
+            // update month
+            currDate = getCurrMonth()
             
         }
     }
     
-    func extractDate() -> [DateValue]{
+    //get year + month
+    func extraDate() -> [String]{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY MMMM"
+        
+        let date = formatter.string(from: currDate)
+        
+        return date.components(separatedBy: " ")
+    }
+    
+    
+    func getCurrMonth() -> Date{
         let calender = Calendar.current
         //getting current date/month
         guard let currMonth = calender.date(byAdding: .month, value: self.currMonth, to: Date()) else {
-            return []
+            return Date()
         }
+        
+        return currMonth
+    }
+    
+    
+    func extractDate() -> [DateValue]{
+        let calender = Calendar.current
+        //getting current date/month
+        let currMonth = getCurrMonth()
         return currMonth.getAllDates().compactMap{ date -> DateValue in
             //getting day
             let day = calender.component(.day, from: date)
@@ -107,9 +141,15 @@ struct CustomDatePicker_Previews: PreviewProvider {
 extension Date{
     func getAllDates()->[Date]{
         let calender = Calendar.current
-        let range = calender.range(of: .day, in: .month, for: self)!
+        
+        //get start date
+        let startDate = calender.date(from: Calendar.current.dateComponents([.year, .month], from: self))!
+        
+        
+        var range = calender.range(of: .day, in: .month, for: startDate)!
+        range.removeLast()
         return range.compactMap{ day -> Date in
-            return calender.date(byAdding: .day, value: day, to: self)!
+            return calender.date(byAdding: .day, value: day == 1 ? 0:day, to: startDate)!
         }
     }
 }

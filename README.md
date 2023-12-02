@@ -26,3 +26,4 @@ Workout entries will have
         -Minutes
         -Seconds
     
+calender veiw and functionality tutorial: https://youtu.be/UZI2dvLoPr8?si=sPKJ7fs2ixSowRyA

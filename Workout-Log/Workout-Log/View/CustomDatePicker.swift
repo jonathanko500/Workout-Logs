@@ -5,9 +5,6 @@
 //  Created by Jonathan Ko on 12/1/23.
 //
 
-
-//cont tutorail @8:52
-
 import SwiftUI
 
 struct CustomDatePicker: View{
@@ -137,24 +134,24 @@ struct CustomDatePicker: View{
                 }){
                     Text("\(value.day)")
                         .font(.title3.bold())
-                        .foregroundColor(isSameDay(date1: log.logDate, date2: currDate) ? .red: .primary)
+                        .foregroundColor(isSameDay(date1: log.logDate, date2: currDate) ? .white: .primary)
                         .frame(maxWidth: .infinity)
                     Spacer()
                     Circle()
-                        .fill(isSameDay(date1: log.logDate, date2: currDate) ? .red : Color("Blue"))
+                        .fill(isSameDay(date1: log.logDate, date2: currDate) ? .white : Color("Blue"))
                         .frame(width: 8, height: 8)
 
                 } else {
                     Text("\(value.day)")
                         .font(.title3.bold())
-                        .foregroundColor(isSameDay(date1: value.date, date2: currDate) ? .red: .primary)
+                        .foregroundColor(isSameDay(date1: value.date, date2: currDate) ? .white: .primary)
                         .frame(maxWidth: .infinity)
                     Spacer()
                 }
             }
         }
         .padding(.vertical)
-        .frame(height: 50, alignment: .top)
+        .frame(height: 60, alignment: .top)
     }
     
     //check for logs

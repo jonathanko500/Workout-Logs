@@ -30,7 +30,7 @@ struct Home: View {
                         .fontWeight(.bold)
                         .padding(.vertical)
                         .frame(maxWidth: .infinity)
-                        .background(Color("Gray"), in: Capsule())
+                        .background(Color("Green"), in: Capsule())
                 }
             }
             .padding(.horizontal)

@@ -7,17 +7,13 @@
 
 import SwiftUI
 
-
-//log model
-
 //array of logs
 struct Log: Identifiable{
     var id = UUID().uuidString
-//    var title: String
-    var warmUp: String
-    var preSet: String
-    var mainSet: String
-    var warmDown: String
+    var warmUp: Set.WarmUp
+    var preSet: Set.PreSet
+    var mainSet: Set.MainSet
+    var warmDown: Set.WarmDown
     var time: Date = Date()
 }
 
@@ -35,38 +31,66 @@ func getSampleLog(offset: Int) -> Date{
     return date ?? Date()
 }
 
+
 var logs: [LogMetaData] = [
     LogMetaData(log: [
-        Log(warmUp: "Sample warm-up 1", preSet: "Sample pre-set 1", mainSet: "Sample main set 1", warmDown: "Sample warm-down 1"),
-        Log(warmUp: "Sample warm-up 2", preSet: "Sample pre-set 2", mainSet: "Sample main set 2", warmDown: "Sample warm-down 2"),
-        Log(warmUp: "Sample warm-up 3", preSet: "Sample pre-set 3", mainSet: "Sample main set 3", warmDown: "Sample warm-down 3")
+        Log(warmUp: Set.WarmUp(set: Set(reps: 10, distance: 100, distanceUnit: "miles", hour: 0, min: 5, sec: 30, notes: "1")),
+            preSet: Set.PreSet(set: Set(reps: 8, distance: 200, distanceUnit: "miles", hour: 0, min: 4, sec: 0, notes: "1")),
+            mainSet: Set.MainSet(set: Set(reps: 12, distance: 300, distanceUnit: "miles", hour: 0, min: 7, sec: 0, notes: "1")),
+            warmDown: Set.WarmDown(set: Set(reps: 5, distance: 50, distanceUnit: "miles", hour: 0, min: 2, sec: 0, notes: "1"))
+        )
     ], logDate: getSampleLog(offset: 1)),
     
     LogMetaData(log: [
-        Log(warmUp: "Sample warm-up 4", preSet: "Sample pre-set 1", mainSet: "Sample main set 1", warmDown: "Sample warm-down 1"),
+        Log(warmUp: Set.WarmUp(set: Set(reps: 10, distance: 100, distanceUnit: "miles", hour: 0, min: 5, sec: 30, notes: "2")),
+            preSet: Set.PreSet(set: Set(reps: 8, distance: 200, distanceUnit: "miles", hour: 0, min: 4, sec: 0, notes: "2")),
+            mainSet: Set.MainSet(set: Set(reps: 12, distance: 300, distanceUnit: "miles", hour: 0, min: 7, sec: 0, notes: "2")),
+            warmDown: Set.WarmDown(set: Set(reps: 5, distance: 50, distanceUnit: "miles", hour: 0, min: 2, sec: 0, notes: "2"))
+        )
     ], logDate: getSampleLog(offset: -3)),
     
     LogMetaData(log: [
-        Log(warmUp: "Sample warm-up 5", preSet: "Sample pre-set 1", mainSet: "Sample main set 1", warmDown: "Sample warm-down 1"),
-    ],logDate: getSampleLog(offset: -8)),
+        Log(warmUp: Set.WarmUp(set: Set(reps: 10, distance: 100, distanceUnit: "miles", hour: 0, min: 5, sec: 30, notes: "3")),
+            preSet: Set.PreSet(set: Set(reps: 8, distance: 200, distanceUnit: "miles", hour: 0, min: 4, sec: 0, notes: "3")),
+            mainSet: Set.MainSet(set: Set(reps: 12, distance: 300, distanceUnit: "miles", hour: 0, min: 7, sec: 0, notes: "3")),
+            warmDown: Set.WarmDown(set: Set(reps: 5, distance: 50, distanceUnit: "miles", hour: 0, min: 2, sec: 0, notes: "3"))
+        )
+    ], logDate: getSampleLog(offset: -10)),
     
     LogMetaData(log: [
-        Log(warmUp: "Sample warm-up 6", preSet: "Sample pre-set 1", mainSet: "Sample main set 1", warmDown: "Sample warm-down 1"),
-    ],logDate: getSampleLog(offset: 10)),
+        Log(warmUp: Set.WarmUp(set: Set(reps: 10, distance: 100, distanceUnit: "miles", hour: 0, min: 5, sec: 30, notes: "4")),
+            preSet: Set.PreSet(set: Set(reps: 8, distance: 200, distanceUnit: "miles", hour: 0, min: 4, sec: 0, notes: "4")),
+            mainSet: Set.MainSet(set: Set(reps: 12, distance: 300, distanceUnit: "miles", hour: 0, min: 7, sec: 0, notes: "4")),
+            warmDown: Set.WarmDown(set: Set(reps: 5, distance: 50, distanceUnit: "miles", hour: 0, min: 2, sec: 0, notes: "4"))
+        )
+    ], logDate: getSampleLog(offset: 3)),
+    
     
     LogMetaData(log: [
-        Log(warmUp: "Sample warm-up 7", preSet: "Sample pre-set 1", mainSet: "Sample main set 1", warmDown: "Sample warm-down 1"),
-    ],logDate: getSampleLog(offset: -22)),
+        Log(warmUp: Set.WarmUp(set: Set(reps: 10, distance: 100, distanceUnit: "miles", hour: 0, min: 5, sec: 30, notes: "5")),
+            preSet: Set.PreSet(set: Set(reps: 8, distance: 200, distanceUnit: "miles", hour: 0, min: 4, sec: 0, notes: "5")),
+            mainSet: Set.MainSet(set: Set(reps: 12, distance: 300, distanceUnit: "miles", hour: 0, min: 7, sec: 0, notes: "5")),
+            warmDown: Set.WarmDown(set: Set(reps: 5, distance: 50, distanceUnit: "miles", hour: 0, min: 2, sec: 0, notes: "5"))
+        )
+    ], logDate: getSampleLog(offset: 8)),
+    
     
     LogMetaData(log: [
-        Log(warmUp: "Sample warm-up 8", preSet: "Sample pre-set 1", mainSet: "Sample main set 1", warmDown: "Sample warm-down 1"),
-    ],logDate: getSampleLog(offset: 15)),
+        Log(warmUp: Set.WarmUp(set: Set(reps: 10, distance: 100, distanceUnit: "miles", hour: 0, min: 5, sec: 30, notes: "6")),
+            preSet: Set.PreSet(set: Set(reps: 8, distance: 200, distanceUnit: "miles", hour: 0, min: 4, sec: 0, notes: "")),
+            mainSet: Set.MainSet(set: Set(reps: 12, distance: 300, distanceUnit: "miles", hour: 0, min: 7, sec: 0, notes: "")),
+            warmDown: Set.WarmDown(set: Set(reps: 5, distance: 50, distanceUnit: "miles", hour: 0, min: 2, sec: 0, notes: ""))
+        )
+    ], logDate: getSampleLog(offset: -15)),
     
     LogMetaData(log: [
-        Log(warmUp: "Sample warm-up 9", preSet: "Sample pre-set 1", mainSet: "Sample main set 1", warmDown: "Sample warm-down 1"),
-    ],logDate: getSampleLog(offset: -20)),
+        Log(warmUp: Set.WarmUp(set: Set(reps: 10, distance: 100, distanceUnit: "miles", hour: 0, min: 5, sec: 30, notes: "6")),
+            preSet: Set.PreSet(set: Set(reps: 8, distance: 200, distanceUnit: "miles", hour: 0, min: 4, sec: 0, notes: "6")),
+            mainSet: Set.MainSet(set: Set(reps: 12, distance: 300, distanceUnit: "miles", hour: 0, min: 7, sec: 0, notes: "6")),
+            warmDown: Set.WarmDown(set: Set(reps: 5, distance: 50, distanceUnit: "miles", hour: 0, min: 2, sec: 0, notes: "6"))
+        )
+    ], logDate: getSampleLog(offset: 9)),
+    
+    
 ]
 
-
-    
-    

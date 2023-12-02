@@ -104,14 +104,15 @@ struct CustomDatePicker: View{
                         VStack(alignment: .leading, spacing: 10){
                             //custom times
                             Text(log.time.addingTimeInterval(CGFloat.random(in: 0...5000)), style: .time)
-                            Text(log.warmUp)
+                            Text("Warm Up:\n\(log.warmUp.set.notes)")
                                 .font(.title2.bold())
-                            Text(log.preSet)
+                            Text("Pre-Set:\n\(log.preSet.set.notes)")
                                 .font(.title2.bold())
-                            Text(log.mainSet)
+                            Text("Main-Set:\n\(log.mainSet.set.notes)")
                                 .font(.title2.bold())
-                            Text(log.warmDown)
+                            Text("Warm Down:\n\(log.warmDown.set.notes)")
                                 .font(.title2.bold())
+
                         }
                         .padding(.vertical, 10)
                         .padding(.horizontal)

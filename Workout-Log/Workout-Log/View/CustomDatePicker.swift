@@ -79,7 +79,7 @@ struct CustomDatePicker: View{
             //dates
             let col = Array(repeating: GridItem(.flexible()), count: 7)
             
-            LazyVGrid(columns: col, spacing: 1){
+            LazyVGrid(columns: col, spacing: 15){
                 ForEach(extractDate()) { value in
                     CardView(value: value)
                         .background(
@@ -112,12 +112,6 @@ struct CustomDatePicker: View{
                         }
                         .padding(.vertical, 10)
                         .padding(.horizontal)
-//                        .frame(maxWidth: .infinity, alignment: .leading)
-//                        .background(
-//                            Color("Red")
-//                                .opacity(0.5),
-//                            in: .cornerRadius(10)
-//                        )
                     }
                 }
                 else {
@@ -143,24 +137,23 @@ struct CustomDatePicker: View{
                 }){
                     Text("\(value.day)")
                         .font(.title3.bold())
-                        .foregroundColor(isSameDay(date1: log.logDate, date2: currDate) ? .white: .primary)
+                        .foregroundColor(isSameDay(date1: log.logDate, date2: currDate) ? .red: .primary)
                         .frame(maxWidth: .infinity)
                     Spacer()
                     Circle()
-                        .fill(isSameDay(date1: log.logDate, date2: currDate) ? .white : Color("Red"))
+                        .fill(isSameDay(date1: log.logDate, date2: currDate) ? .red : Color("Blue"))
                         .frame(width: 8, height: 8)
-                    
+
                 } else {
                     Text("\(value.day)")
                         .font(.title3.bold())
-                        .foregroundColor(isSameDay(date1: value.date, date2: currDate) ? .white: .primary)
+                        .foregroundColor(isSameDay(date1: value.date, date2: currDate) ? .red: .primary)
                         .frame(maxWidth: .infinity)
                     Spacer()
                 }
             }
         }
-        
-        .padding(.vertical,8)
+        .padding(.vertical)
         .frame(height: 50, alignment: .top)
     }
     

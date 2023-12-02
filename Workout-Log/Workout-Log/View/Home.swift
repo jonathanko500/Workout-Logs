@@ -18,7 +18,25 @@ struct Home: View {
                 //Date Picker
                 CustomDatePicker(currDate: $currDate)
             }
-            
+            .padding(.vertical)
+        }
+        //safe area
+        .safeAreaInset(edge: .bottom) {
+            HStack{
+                Button{
+                    
+                } label: {
+                    Text("Add Workout")
+                        .fontWeight(.bold)
+                        .padding(.vertical)
+                        .frame(maxWidth: .infinity)
+                        .background(Color("Gray"), in: Capsule())
+                }
+            }
+            .padding(.horizontal)
+            .padding(.top, 10)
+            .foregroundColor(.blue)
+            .background(.ultraThinMaterial)
         }
     }
 }

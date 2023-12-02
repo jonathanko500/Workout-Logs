@@ -79,11 +79,53 @@ struct CustomDatePicker: View{
             //dates
             let col = Array(repeating: GridItem(.flexible()), count: 7)
             
-            LazyVGrid(columns: col, spacing: 15){
+            LazyVGrid(columns: col, spacing: 1){
                 ForEach(extractDate()) { value in
                     CardView(value: value)
+                        .background(
+                            Capsule()
+                                .fill(Color("Red"))
+                                .padding(.horizontal,8)
+                                .opacity(isSameDay(date1: value.date, date2: currDate) ? 1 : 0)
+                        )
+                        .onTapGesture {
+                            currDate = value.date
+                        }
                 }
             }
+            //display log details
+            VStack(spacing: 15){
+                Text("Workout")
+                    .font(.title2.bold())
+                    .frame(maxWidth: .infinity,alignment: .leading)
+                    .padding(.vertical, 10)
+                
+                if let log = logs.first(where: { log in
+                    return isSameDay(date1: log.logDate, date2: currDate)
+                }) {
+                    ForEach(log.log){log in
+                        VStack(alignment: .leading, spacing: 10){
+                            //custom times
+                            Text(log.time.addingTimeInterval(CGFloat.random(in: 0...5000)), style: .time)
+                            Text(log.title)
+                                .font(.title2.bold())
+                        }
+                        .padding(.vertical, 10)
+                        .padding(.horizontal)
+//                        .frame(maxWidth: .infinity, alignment: .leading)
+//                        .background(
+//                            Color("Red")
+//                                .opacity(0.5),
+//                            in: .cornerRadius(10)
+//                        )
+                    }
+                }
+                else {
+                    Text("Should have done a workout")
+                }
+            }
+            .padding()
+            
         }
         .onChange(of: currMonth){newValue in
             // update month
@@ -96,13 +138,36 @@ struct CustomDatePicker: View{
     func CardView(value: DateValue) -> some View {
         VStack{
             if value.day != -1{
-                Text("\(value.day)")
-                    .font(.title3.bold())
+                if let log = logs.first(where: { log in
+                    return isSameDay(date1: log.logDate, date2: value.date)
+                }){
+                    Text("\(value.day)")
+                        .font(.title3.bold())
+                        .foregroundColor(isSameDay(date1: log.logDate, date2: currDate) ? .red: .primary)
+                        .frame(maxWidth: .infinity)
+                    Spacer()
+                    Circle()
+                        .fill(isSameDay(date1: log.logDate, date2: currDate) ? .red : Color("Red"))
+                        .frame(width: 8, height: 8)
+                    
+                } else {
+                    Text("\(value.day)")
+                        .font(.title3.bold())
+                        .foregroundColor(isSameDay(date1: value.date, date2: currDate) ? .red: .primary)
+                        .frame(maxWidth: .infinity)
+                    Spacer()
+                }
             }
         }
         
         .padding(.vertical,8)
-        .frame(height: 60, alignment: .top)
+        .frame(height: 50, alignment: .top)
+    }
+    
+    //check for logs
+    func isSameDay(date1: Date, date2: Date)-> Bool{
+        let calender = Calendar.current
+        return calender.isDate(date1, inSameDayAs: date2)
     }
     
     //get year + month

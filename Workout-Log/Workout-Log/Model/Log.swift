@@ -13,7 +13,11 @@ import SwiftUI
 //array of logs
 struct Log: Identifiable{
     var id = UUID().uuidString
-    var title: String
+//    var title: String
+    var warmUp: String
+    var preSet: String
+    var mainSet: String
+    var warmDown: String
     var time: Date = Date()
 }
 
@@ -33,32 +37,36 @@ func getSampleLog(offset: Int) -> Date{
 
 var logs: [LogMetaData] = [
     LogMetaData(log: [
-        Log(title: "Sample 1"),
-        Log(title: "Sample 2"),
-        Log(title: "Sample 3")
+        Log(warmUp: "Sample warm-up 1", preSet: "Sample pre-set 1", mainSet: "Sample main set 1", warmDown: "Sample warm-down 1"),
+        Log(warmUp: "Sample warm-up 2", preSet: "Sample pre-set 2", mainSet: "Sample main set 2", warmDown: "Sample warm-down 2"),
+        Log(warmUp: "Sample warm-up 3", preSet: "Sample pre-set 3", mainSet: "Sample main set 3", warmDown: "Sample warm-down 3")
     ], logDate: getSampleLog(offset: 1)),
     
     LogMetaData(log: [
-        Log(title: "Sample 4")
+        Log(warmUp: "Sample warm-up 4", preSet: "Sample pre-set 1", mainSet: "Sample main set 1", warmDown: "Sample warm-down 1"),
     ], logDate: getSampleLog(offset: -3)),
     
     LogMetaData(log: [
-        Log(title: "Sample 5")
+        Log(warmUp: "Sample warm-up 5", preSet: "Sample pre-set 1", mainSet: "Sample main set 1", warmDown: "Sample warm-down 1"),
     ],logDate: getSampleLog(offset: -8)),
     
     LogMetaData(log: [
-        Log(title: "Sample 6")
+        Log(warmUp: "Sample warm-up 6", preSet: "Sample pre-set 1", mainSet: "Sample main set 1", warmDown: "Sample warm-down 1"),
     ],logDate: getSampleLog(offset: 10)),
     
     LogMetaData(log: [
-        Log(title: "Sample 7")
+        Log(warmUp: "Sample warm-up 7", preSet: "Sample pre-set 1", mainSet: "Sample main set 1", warmDown: "Sample warm-down 1"),
     ],logDate: getSampleLog(offset: -22)),
     
     LogMetaData(log: [
-        Log(title: "Sample 8")
+        Log(warmUp: "Sample warm-up 8", preSet: "Sample pre-set 1", mainSet: "Sample main set 1", warmDown: "Sample warm-down 1"),
     ],logDate: getSampleLog(offset: 15)),
     
     LogMetaData(log: [
-        Log(title: "Sample 9")
+        Log(warmUp: "Sample warm-up 9", preSet: "Sample pre-set 1", mainSet: "Sample main set 1", warmDown: "Sample warm-down 1"),
     ],logDate: getSampleLog(offset: -20)),
 ]
+
+
+    
+    

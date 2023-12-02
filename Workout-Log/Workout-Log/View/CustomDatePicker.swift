@@ -100,11 +100,17 @@ struct CustomDatePicker: View{
                 if let log = logs.first(where: { log in
                     return isSameDay(date1: log.logDate, date2: currDate)
                 }) {
-                    ForEach(log.log){log in
+                    ForEach(log.log){ log in
                         VStack(alignment: .leading, spacing: 10){
                             //custom times
                             Text(log.time.addingTimeInterval(CGFloat.random(in: 0...5000)), style: .time)
-                            Text(log.title)
+                            Text(log.warmUp)
+                                .font(.title2.bold())
+                            Text(log.preSet)
+                                .font(.title2.bold())
+                            Text(log.mainSet)
+                                .font(.title2.bold())
+                            Text(log.warmDown)
                                 .font(.title2.bold())
                         }
                         .padding(.vertical, 10)

@@ -10,39 +10,45 @@ import SwiftUI
 struct Home: View {
     
     @State var currDate: Date = Date()
+    @State var isSetMakerActive = false
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false){
-            VStack (spacing: 20){
-                
-                //Date Picker
-                CustomDatePicker(currDate: $currDate)
+        NavigationView {
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 20) {
+                    // Date Picker
+                    CustomDatePicker(currDate: $currDate)
+                }
+                .padding(.vertical)
             }
-            .padding(.vertical)
-        }
-        //safe area
-        .safeAreaInset(edge: .bottom) {
-            HStack{
-                Button{
-                    
-                } label: {
+            .navigationBarTitle("Home")
+            .navigationBarItems(trailing:
+                NavigationLink(
+                    destination: SetMaker(),
+                    isActive: $isSetMakerActive
+                ) {
                     Text("Add Workout")
                         .fontWeight(.bold)
                         .padding(.vertical)
                         .frame(maxWidth: .infinity)
-                        .background(Color("Green"), in: Capsule())
+                        //.background(Color("Green"), in: Capsule())
                 }
-            }
-            .padding(.horizontal)
-            .padding(.top, 10)
-            .foregroundColor(.blue)
-            .background(.ultraThinMaterial)
+            )
+            .background(
+                NavigationLink(
+                    destination: SetMaker(),
+                    isActive: $isSetMakerActive
+                ) {
+                    EmptyView()
+                }
+                .hidden()
+            )
         }
     }
 }
 
 
-struct HomeView_Previews: PreviewProvider {
+struct Home_Previews: PreviewProvider {
     static var previews: some View {
         Home()
     }

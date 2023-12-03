@@ -16,6 +16,7 @@
 		67A893B72B1A587400578D30 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A893B62B1A587400578D30 /* DateValue.swift */; };
 		67A893BA2B1A98FE00578D30 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A893B92B1A98FE00578D30 /* Log.swift */; };
 		67AABFB22B1BE521004FB1D3 /* Sets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AABFB12B1BE521004FB1D3 /* Sets.swift */; };
+		67AABFB42B1BFFD4004FB1D3 /* SetMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AABFB32B1BFFD4004FB1D3 /* SetMaker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		67A893B62B1A587400578D30 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		67A893B92B1A98FE00578D30 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		67AABFB12B1BE521004FB1D3 /* Sets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sets.swift; sourceTree = "<group>"; };
+		67AABFB32B1BFFD4004FB1D3 /* SetMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMaker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			children = (
 				6798C0022B1959AD000171DC /* Home.swift */,
 				67A893B32B1A53AA00578D30 /* CustomDatePicker.swift */,
+				67AABFB32B1BFFD4004FB1D3 /* SetMaker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				67A893BA2B1A98FE00578D30 /* Log.swift in Sources */,
 				6798C0032B1959AD000171DC /* Home.swift in Sources */,
 				6798BFF32B19592F000171DC /* Workout_LogApp.swift in Sources */,
+				67AABFB42B1BFFD4004FB1D3 /* SetMaker.swift in Sources */,
 				67AABFB22B1BE521004FB1D3 /* Sets.swift in Sources */,
 				67A893B72B1A587400578D30 /* DateValue.swift in Sources */,
 			);

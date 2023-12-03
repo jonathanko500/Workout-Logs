@@ -27,8 +27,7 @@ struct CustomDatePicker: View{
                 VStack(alignment: .leading, spacing: 10){
                     //top of calander holding month + year
                     Text(extraDate()[0])
-                        .font(.caption)
-                        .fontWeight(.semibold)
+                        .font(.title.bold())
                     
                     Text(extraDate()[1])
                         .font(.title.bold())

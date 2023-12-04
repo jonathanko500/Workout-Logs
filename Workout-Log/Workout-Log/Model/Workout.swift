@@ -1,8 +1,8 @@
 //
-//  Log.swift
+//  Workout.swift
 //  Workout-Log
 //
-//  Created by Jonathan Ko on 12/2/23.
+//  Created by Jonathan Ko on 12/4/23.
 //
 
 import SwiftUI

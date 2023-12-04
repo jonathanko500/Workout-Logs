@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Home: View {
-    
     @State var currDate: Date = Date()
     @State var isSetMakerActive = false
     
@@ -18,35 +17,25 @@ struct Home: View {
                 VStack(spacing: 20) {
                     // Date Picker
                     CustomDatePicker(currDate: $currDate)
+                    
+                    Button("Add Workout") {
+                        isSetMakerActive = true
+                    }
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color.blue)
+                    .cornerRadius(8)
+                    .sheet(isPresented: $isSetMakerActive) {
+                        SetMaker()
+                    }
+                    .padding(.horizontal)
                 }
                 .padding(.vertical)
             }
             .navigationBarTitle("Home")
-            .navigationBarItems(trailing:
-                NavigationLink(
-                    destination: SetMaker(),
-                    isActive: $isSetMakerActive
-                ) {
-                    Text("Add Workout")
-                        .fontWeight(.bold)
-                        .padding(.vertical)
-                        .frame(maxWidth: .infinity)
-                        //.background(Color("Green"), in: Capsule())
-                }
-            )
-            .background(
-                NavigationLink(
-                    destination: SetMaker(),
-                    isActive: $isSetMakerActive
-                ) {
-                    EmptyView()
-                }
-                .hidden()
-            )
         }
     }
 }
-
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {

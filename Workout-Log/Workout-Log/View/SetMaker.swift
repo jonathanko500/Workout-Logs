@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct SetMaker: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    
+    
     @State private var warmUpSets: String = ""
     @State private var warmUpNotes: String = ""
     
@@ -35,28 +39,25 @@ struct SetMaker: View {
             createSection(withHeader: "Warm Down", textEditor: $warmDownSets, textField: $warmDownNotes)
             
             Button("Save Work Out") {
-                let newWarmUp = Set.WarmUp(set: Set(sets: warmUpSets, notes: warmUpNotes))
+                let newWarmUp = Workout.WarmUp(set: Workout(sets: warmUpSets, notes: warmUpNotes))
                 // Save newWarmUp to Core Data
                 
-                let newPreSet = Set.PreSet(set: Set(sets: preSets, notes: preNotes))
+                let newPreSet = Workout.PreSet(set: Workout(sets: preSets, notes: preNotes))
                 // Save newPreSet to Core Data
                 
-                let newMainSet = Set.MainSet(set: Set(sets: mainSets, notes: mainNotes))
+                let newMainSet = Workout.MainSet(set: Workout(sets: mainSets, notes: mainNotes))
                 // Save newMainSet to Core Data
                 
-                let newWarmDown = Set.WarmDown(set: Set(sets: warmDownSets, notes: warmDownNotes))
+                let newWarmDown = Workout.WarmDown(set: Workout(sets: warmDownSets, notes: warmDownNotes))
                 // Save newWarmDown to Core Data
                 
                 let newDate = selectedDate
                 
-                saveToSets(warmUp: newWarmUp, preSet: newPreSet, mainSet: newMainSet, warmDown: newWarmDown, date: newDate)
+                saveToWorkouts(warmUp: newWarmUp, preSet: newPreSet, mainSet: newMainSet, warmDown: newWarmDown, date: newDate)
                 
-                
-                
-                
+                self.presentationMode.wrappedValue.dismiss()
             }
         }
-        
     }
 }
 
@@ -72,8 +73,6 @@ func createSection(withHeader header: String, textEditor: Binding<String>, textF
         }
     }
 }
-
-
 
 struct SetMaker_Previews: PreviewProvider {
     static var previews: some View {

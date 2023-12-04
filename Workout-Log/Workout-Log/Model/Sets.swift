@@ -7,62 +7,63 @@
 
 import SwiftUI
 
-// Base Set struct
-struct Set: Identifiable {
+// Base Workout struct
+struct Workout: Identifiable {
     var id = UUID().uuidString
     var sets: String
     var notes: String
 }
 
 // Extended structs
-extension Set {
+extension Workout {
     struct WarmUp {
-        var set: Set
-        
+        var set: Workout
     }
     
     struct PreSet {
-        var set: Set
-        
+        var set: Workout
     }
     
     struct MainSet {
-        var set: Set
-        
+        var set: Workout
     }
     
     struct WarmDown {
-        var set: Set
-        
+        var set: Workout
     }
 }
 
-
-struct SetMetaData: Identifiable {
+struct WorkoutMetaData: Identifiable {
     var id = UUID().uuidString
-    var set: [Set] // Fix the array declaration
-    var setDate: Date
+    var workout: [Workout]
+    var workoutDate: Date
 }
 
+var workouts: [WorkoutMetaData] = []
 
-var sets: [SetMetaData] = []
+func saveToWorkouts(warmUp: Workout.WarmUp, preSet: Workout.PreSet, mainSet: Workout.MainSet, warmDown: Workout.WarmDown, date: Date) {
+    // Create Workout objects from the provided input
+    let warmUpWorkout = Workout(sets: warmUp.set.sets, notes: warmUp.set.notes)
+    let preSetWorkout = Workout(sets: preSet.set.sets, notes: preSet.set.notes)
+    let mainSetWorkout = Workout(sets: mainSet.set.sets, notes: mainSet.set.notes)
+    let warmDownWorkout = Workout(sets: warmDown.set.sets, notes: warmDown.set.notes)
+    
+    // Create WorkoutMetaData object
+    let workoutMetaData = WorkoutMetaData(workout: [warmUpWorkout, preSetWorkout, mainSetWorkout, warmDownWorkout], workoutDate: date)
+    
+    printWorkouts()
+    
+    // Append WorkoutMetaData to workouts array
+    workouts.append(workoutMetaData)
+}
 
-func saveToSets(warmUp: Set.WarmUp, preSet: Set.PreSet, mainSet: Set.MainSet, warmDown: Set.WarmDown, date: Date) {
-    // Create Set objects from the provided input
-    let warmUpSet = Set(sets: warmUp.set.sets, notes: warmUp.set.notes)
-    let preSetSet = Set(sets: preSet.set.sets, notes: preSet.set.notes)
-    let mainSetSet = Set(sets: mainSet.set.sets, notes: mainSet.set.notes)
-    let warmDownSet = Set(sets: warmDown.set.sets, notes: warmDown.set.notes)
-    
-    print("Warm Up Sets: \(warmUpSet.sets), Warm Up Notes: \(warmUpSet.notes)")
-    print("Pre Sets: \(preSetSet.sets), Pre Notes: \(preSetSet.notes)")
-    print("Main Sets: \(mainSetSet.sets), Main Notes: \(mainSetSet.notes)")
-    print("Warm Down Sets: \(warmDownSet.sets), Warm Down Notes: \(warmDownSet.notes)")
-    print("Date: \(date)")
-    
-    // Create SetMetaData object
-    let setMetaData = SetMetaData(set: [warmUpSet, preSetSet, mainSetSet, warmDownSet], setDate: date)
-    
-    // Append SetMetaData to sets array
-    sets.append(setMetaData)
+// Function to print all entries in the workouts array
+func printWorkouts() {
+    for workoutMetaData in workouts {
+        print("Date: \(workoutMetaData.workoutDate)")
+        for workout in workoutMetaData.workout {
+            print("Sets: \(workout.sets), Notes: \(workout.notes)")
+        }
+        print("------")
+    }
 }

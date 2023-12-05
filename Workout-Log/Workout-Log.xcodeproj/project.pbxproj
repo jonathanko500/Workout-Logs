@@ -18,6 +18,7 @@
 		67AABFB42B1BFFD4004FB1D3 /* SetMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AABFB32B1BFFD4004FB1D3 /* SetMaker.swift */; };
 		67AABFBD2B1E9C3D004FB1D3 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AABFBC2B1E9C3D004FB1D3 /* Workout.swift */; };
 		67AAC02A2B1F192B004FB1D3 /* Workouts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 67AAC0282B1F192B004FB1D3 /* Workouts.xcdatamodeld */; };
+		67AAC02C2B1F22F2004FB1D3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AAC02B2B1F22F2004FB1D3 /* Persistence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		67AABFB32B1BFFD4004FB1D3 /* SetMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMaker.swift; sourceTree = "<group>"; };
 		67AABFBC2B1E9C3D004FB1D3 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		67AAC0292B1F192B004FB1D3 /* Workouts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Workouts.xcdatamodel; sourceTree = "<group>"; };
+		67AAC02B2B1F22F2004FB1D3 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				6798C0002B195972000171DC /* View */,
 				6798BFF22B19592F000171DC /* Workout_LogApp.swift */,
 				6798BFF42B19592F000171DC /* ContentView.swift */,
+				67AAC02B2B1F22F2004FB1D3 /* Persistence.swift */,
 				6798BFF62B195931000171DC /* Assets.xcassets */,
 				6798BFF82B195931000171DC /* Preview Content */,
 			);
@@ -183,6 +186,7 @@
 				67AABFBD2B1E9C3D004FB1D3 /* Workout.swift in Sources */,
 				67AABFB42B1BFFD4004FB1D3 /* SetMaker.swift in Sources */,
 				67A893B72B1A587400578D30 /* DateValue.swift in Sources */,
+				67AAC02C2B1F22F2004FB1D3 /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

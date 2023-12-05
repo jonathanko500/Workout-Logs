@@ -9,6 +9,13 @@ import SwiftUI
 
 struct SetMaker: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
+
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \WorkoutEntity.id, ascending: true)],
+        animation: .default)
+    private var items: FetchedResults<WorkoutEntity>
+    
     @Environment(\.presentationMode) var presentationMode
     
     

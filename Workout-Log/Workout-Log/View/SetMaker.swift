@@ -55,6 +55,8 @@ struct SetMaker: View {
                 
                 saveToWorkouts(warmUp: newWarmUp, preSet: newPreSet, mainSet: newMainSet, warmDown: newWarmDown, date: newDate)
                 
+                copyWorkoutsToLogs()
+                
                 self.presentationMode.wrappedValue.dismiss()
             }
         }

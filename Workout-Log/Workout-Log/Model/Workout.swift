@@ -5,11 +5,13 @@
 //  Created by Jonathan Ko on 12/4/23.
 //
 
-import SwiftUI
+
+import Foundation
+import CoreData
 
 // Base Workout struct
 struct Workout: Identifiable {
-    var id = UUID().uuidString
+    var id = UUID()
     var sets: String
     var notes: String
 }
@@ -39,31 +41,22 @@ struct WorkoutMetaData: Identifiable {
     var workoutDate: Date
 }
 
+
 var workouts: [WorkoutMetaData] = []
+
 
 func saveToWorkouts(warmUp: Workout.WarmUp, preSet: Workout.PreSet, mainSet: Workout.MainSet, warmDown: Workout.WarmDown, date: Date) {
     // Create Workout objects from the provided input
+
     let warmUpWorkout = Workout(sets: warmUp.set.sets, notes: warmUp.set.notes)
     let preSetWorkout = Workout(sets: preSet.set.sets, notes: preSet.set.notes)
     let mainSetWorkout = Workout(sets: mainSet.set.sets, notes: mainSet.set.notes)
     let warmDownWorkout = Workout(sets: warmDown.set.sets, notes: warmDown.set.notes)
-    
+
     // Create WorkoutMetaData object
     let workoutMetaData = WorkoutMetaData(workout: [warmUpWorkout, preSetWorkout, mainSetWorkout, warmDownWorkout], workoutDate: date)
-    
-    printWorkouts()
-    
+
     // Append WorkoutMetaData to workouts array
     workouts.append(workoutMetaData)
 }
 
-// Function to print all entries in the workouts array
-func printWorkouts() {
-    for workoutMetaData in workouts {
-        print("Date: \(workoutMetaData.workoutDate)")
-        for workout in workoutMetaData.workout {
-            print("Sets: \(workout.sets), Notes: \(workout.notes)")
-        }
-        print("------")
-    }
-}

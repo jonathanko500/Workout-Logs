@@ -9,6 +9,7 @@
 
 
 import SwiftUI
+import CoreData
 
 @main
 struct Workout_LogApp: App {

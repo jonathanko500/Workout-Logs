@@ -1,29 +1,19 @@
 # Workout Log
 
 Created By Jonathan Ko
-email:  jko3@mail.sfsu.edu
-ID:     921567436
 
-Workout Log using a calander to show the date(s) a user logged a work out
+Workout Log uses a calander based UX to show the the user the date(s) a work out that has been logged
 When selecting a specific date, the user can
     -look at the logged work out
     -add workout 
 
-When adding workout, user can add specific portions of the workout
+When adding a workout, user can add to a specific portions of the workout
     -warm up
-    -pre-set(s)
+    -pre-set
     -main set
     -warm down
-    -notes (optional)
+    -notes
 
 Workout entries will have
-    -Repetition of set
-    -Repition of activity
-    -Distance of activity
-    -Description of activity
-    -Interval of activity
-        -Hour
-        -Minutes
-        -Seconds
+    -each entry will a text box for users to add however much the user has done
     
-calender veiw and functionality tutorial: https://youtu.be/UZI2dvLoPr8?si=sPKJ7fs2ixSowRyA

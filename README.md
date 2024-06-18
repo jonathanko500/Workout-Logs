@@ -2,7 +2,7 @@
 
 Created By Jonathan Ko
 
-Workout Log uses a calander based UX to show the the user the date(s) a work out that has been logged </br>
+An IOS app made using Swift that uses a calander based UX to show the the user the date(s) a work out that has been logged </br>
 When selecting a specific date, the user can </br>
     -look at the logged work out </br>
     -add workout  </br>
